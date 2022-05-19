@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ログイン</title>
+</head>
+<body>
+
+	<h1>ログイン</h1>
+		<span th:text="${message}" style="color: red"></span>
+	
+	
+	<!-- ログインボタンを押したらアイテム一覧へ飛ぶ -->
+	<form action="login" method="post">
+
+	<table>
+		<tr>
+			<td>名前</td>
+			<td><input type="text" name="name"></td>
+
+		</tr>
+
+		<tr>
+			<td>パスワード</td>
+			<td><input type="password" name="password"></td>
+
+		</tr>
+	</table>
+
+	<input type="submit" value="ログイン">
+	</form>
+	
+
+</body>
+</html>
