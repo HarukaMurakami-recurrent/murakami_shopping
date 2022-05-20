@@ -2,9 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>カートの中身</title>
 </head>
 <body>
+
+	<h1>カートの中身</h1>
+	
+	<form action="/purchaseCart">
+
+	<table border="1">
+		<tr th:each="item : ${items}">
+			<td th:text="${item.value.name}"></td>
+			<td th:text="${item.value.price}"></td>
+			<td th:text="${item.value.quantity}"></td>
+			<td>
+				<a th:href="|/cart/delete/${item.value.code}|">削除</a>
+			</td>
+			<!-- <td th:text="${item.value.price * item.value.quantity}"></td> -->
+		</tr>
+	</table>
+	
+	<input type="submit" value="購入する">
+	
+	<br>
+	
+	<a href="/showItem">商品一覧へ戻る</a>
+
+	</form>
 
 </body>
 </html>

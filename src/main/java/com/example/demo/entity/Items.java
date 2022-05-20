@@ -47,7 +47,6 @@ public class Items {
 	
 	
 	
-	
 	//カートに追加する際、数値をいじれる！
 	@Transient
 	private Integer quantity;

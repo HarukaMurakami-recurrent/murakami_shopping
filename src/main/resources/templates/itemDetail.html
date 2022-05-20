@@ -5,33 +5,24 @@
 <title>商品詳細</title>
 </head>
 <body>
-	<h1>商品一覧</h1>
+	<h1>商品詳細</h1>
+	
+	<form th:action="|/cart/add/${code}|" method="post">
 	
 	<table border="1">
-	<tbody>
 		<tr>
-			<td rowspan="4"></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td th:text="${item.name}"></td>
+			<td th:text="${item.picture}"></td>
+			<td th:text="${item.price}"></td>
+			<td>個数</td>
+			<td>
+				<input type="submit" value="カートに入れる">
+			</td>
+			
 		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	</tbody>
-</table>
+	</table>  
+	</form>
+
 
 </body>
 </html>

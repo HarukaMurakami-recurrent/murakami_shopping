@@ -19,7 +19,11 @@
 			<td th:text="${item.picture}"></td>
 			<td th:text="${item.name}"></td>
 			<td th:text="${item.price}"></td>
-			<td>詳細</td>
+			<td>
+			<a th:href="|/itemDetail/${item.code}|">
+				<button> 詳細</button>
+			</a>
+			</td>
 		</tr>
 
 	</table>
