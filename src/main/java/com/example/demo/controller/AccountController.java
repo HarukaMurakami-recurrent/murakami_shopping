@@ -50,6 +50,13 @@ public class AccountController {
 	public String login() {
 		return "login";
 	}
+	
+	//ログアウト処理
+	@RequestMapping("/logout")
+	public String logout() {
+		//ログアウト独特の処理もここに記述
+		return login();
+	}
 
 	// 登録ボタン押したときの処理<form action="/newAccount">
 	// DBに登録、未入力チェックをおこなう
