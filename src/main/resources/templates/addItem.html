@@ -2,9 +2,61 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>商品追加</title>
 </head>
 <body>
+
+
+		<form action="/addItem" method="post">
+
+		<!-- 新規商品登録情報入力フォーム -->
+		<table>
+			<tr>
+				<td>商品名</td>
+				<td><input type="text" name="name"></td>
+
+			</tr>
+
+			<tr>
+				<td>値段</td>
+				<td><input type="text" name="price"></td>
+
+			</tr>
+
+			<tr>
+				<td>写真</td>
+				<td><input type="text" name="picture"></td>
+
+			</tr>
+
+			<tr>
+				<td>在庫数</td>
+				<td><input type="text" name="stock"></td>
+
+			</tr>
+
+			<tr>
+				<td>カテゴリー</td>
+				<td><input type="password" name="category_key"></td>
+
+			</tr>
+			
+			<tr>
+				<td>発送までの日数</td>
+				<td><input type="password" name="category_key"></td>
+
+			</tr>
+			
+			<tr>
+				<td>今日の日付</td>
+				<td><input type="password" name="category_key"></td>
+
+			</tr>
+		</table>
+
+		<input type="submit" value="出品する">
+
+	</form>
 
 </body>
 </html>

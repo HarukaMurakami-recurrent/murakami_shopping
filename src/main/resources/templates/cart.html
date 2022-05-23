@@ -11,16 +11,29 @@
 	<form action="/purchaseCart">
 
 	<table border="1">
+		<tr>
+			<td>商品名</td>
+			<td>値段</td>
+			<td>個数</td>
+			<td>合計</td>
+			<td></td>
+			<!-- <td th:text="${item.value.price * item.value.quantity}"></td> -->
+		</tr>
+		
 		<tr th:each="item : ${items}">
 			<td th:text="${item.value.name}"></td>
 			<td th:text="${item.value.price}"></td>
 			<td th:text="${item.value.quantity}"></td>
+			<td th:text="${item.value.price * item.value.quantity}"></td>
 			<td>
 				<a th:href="|/cart/delete/${item.value.code}|">削除</a>
 			</td>
-			<!-- <td th:text="${item.value.price * item.value.quantity}"></td> -->
 		</tr>
 	</table>
+	
+	<span th:text="${total}"></span>
+	
+	<br>
 	
 	<input type="submit" value="購入する">
 	

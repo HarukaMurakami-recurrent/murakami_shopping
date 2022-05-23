@@ -36,12 +36,20 @@ public class Cart {
 			int i = existedItem.getQuantity();
 			i += quantity ;
 			existedItem.setQuantity(i);
+			recalcTotal();
 		}
 	}
 	
 	public void deleteCart(int itemCode) {
 		//カートの中身を削除
 		items.remove(itemCode);
+		recalcTotal();
+	}
+	
+	private void recalcTotal() {
+		total=0;
+		for(Items item : items.values()) {
+			total += item.getPrice() * item.getQuantity();		}
 	}
 
 }

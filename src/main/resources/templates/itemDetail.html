@@ -12,7 +12,9 @@
 	<table border="1">
 		<tr>
 			<td th:text="${item.name}"></td>
-			<td th:text="${item.picture}"></td>
+			<td>
+				<img  th:src="|/${item.picture}|">
+			</td>
 			<td th:text="${item.price}"></td>
 			<td>個数</td>
 			<td>

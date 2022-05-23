@@ -2,9 +2,78 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ユーザー情報更新</title>
 </head>
 <body>
+
+	<table border="1">
+		<tr>
+			<td>名前</td>
+			<td th:text="${session.accountInfo.name}"></td>
+		</tr>
+
+		<tr>
+			<td>住所</td>
+			<td th:text="${session.accountInfo.address}"></td>
+		</tr>
+		<tr>
+			<td>電話番号</td>
+			<td th:text="${session.accountInfo.tel}"></td>
+		</tr>
+		<tr>
+			<td>メールアドレス</td>
+			<td th:text="${session.accountInfo.email}"></td>
+		</tr>
+		<tr>
+			<td>パスワード</td>
+			<td th:text="${session.accountInfo.pass}"></td>
+		</tr>
+
+	</table>
+
+	<h2>編集する</h2>
+
+	<!-- アカウント更新 -->
+	<form action="/update" method="post">
+
+		<table border="1">
+			<tr>
+				<td>名前</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+
+			<tr>
+				<td>住所</td>
+				<td><input type="text" name="address"></td>
+			</tr>
+			<tr>
+				<td>電話番号</td>
+				<td><input type="text" name="tel"></td>
+			</tr>
+			<tr>
+				<td>メールアドレス</td>
+				<td><input type="text" name="email"></td>
+			</tr>
+			<tr>
+				<td>パスワード</td>
+				<td><input type="text" name="pass"></td>
+			</tr>
+
+		</table>
+
+		<!-- 未入力があった場合のメッセージ表示 -->
+		<span th:text="${message}" style="color: red"></span> 
+		<input type="submit" value="確定">
+	</form>
+
+	<br>
+
+	<!-- アカウント削除form -->
+	<form action="/accountDelete" method="post">
+
+		<input type="submit" value="アカウント削除">
+
+	</form>
 
 	<span th:replace="logout"></span>
 
