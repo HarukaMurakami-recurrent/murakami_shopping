@@ -50,11 +50,11 @@ public class AccountController {
 	public String login() {
 		return "login";
 	}
-	
-	//ログアウト処理
+
+	// ログアウト処理
 	@RequestMapping("/logout")
 	public String logout() {
-		//ログアウト独特の処理もここに記述
+		// ログアウト独特の処理もここに記述
 		return login();
 	}
 
@@ -115,15 +115,16 @@ public class AccountController {
 			// DB,usersのnameとpasswordと一致していたらshowItemへ遷移
 			// usersListが1件以上あったらログイン
 			if (usersList.size() >= 1) {
-				//itemList
-					List<Items> itemList = itemsRepository.findAll();
-					mv.addObject("items",itemList);
+				// itemList
+				List<Items> itemList = itemsRepository.findAll();
+				mv.addObject("items", itemList);
+				session.setAttribute("accountInfo", usersList.get(0));
 				mv.setViewName("showItem");
 			} else {
 
 				// nameとpassが不一致の場合、「一致しません」とメッセージを表示
 				// ログイン画面へ遷移
-				mv.addObject("message", "一致しません");
+				mv.addObject("message", "名前かパスワードが間違っています");
 				mv.setViewName("login");
 
 			}
@@ -136,4 +137,62 @@ public class AccountController {
 		return mv;
 
 	}
+
+//	
+//	//ユーザー情報の閲覧
+	@RequestMapping(value = "/accountInfo", method = RequestMethod.GET)
+	public ModelAndView accountInfo(ModelAndView mv) {
+
+		mv.setViewName("accountInfo");
+		return mv;
+	}
+
+	// 確定ボタンを押したときの処理<form action="/update" method="post">
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public ModelAndView update(
+			@RequestParam("name") String name, 
+			@RequestParam("address") String address,
+			@RequestParam("tel") String tel,
+			@RequestParam("email") String email,
+			@RequestParam("pass") String pass,
+			ModelAndView mv) {
+		// 未入力チェック
+		// ログイン画面に未入力があった場合
+		if (name == null || name.length() == 0 || address == null || address.length() == 0 || tel == null
+				|| tel.length() == 0 || email == null || email.length() == 0 || pass == null || pass.length() == 0) {
+			// 新規登録画面に「未入力」の表示
+			mv.addObject("message", "未入力があります");
+			mv.setViewName("accountInfo");
+		} else {
+			// すべて入力があった場合
+
+			// DB、Usersからデータを取得setAttributeしたaccountInfo
+			Users u = (Users) session.getAttribute("accountInfo");
+			
+			mv.addObject("code",u.getCode());
+			Users user= new Users(u.getCode(),name,address,tel,email,pass);
+			usersRepository.saveAndFlush(user);
+			mv.setViewName("login");
+		}
+		return mv;
+
+	}
+	
+	// 削除ボタンを押したときの処理<form action="/accountDelete" method="post">
+	@RequestMapping(value = "/accountDelete", method = RequestMethod.POST)
+	public ModelAndView accountDelete(ModelAndView mv) {
+
+		// accountInfoのsession情報をgetAttributeする
+		Users user = (Users) session.getAttribute("accountInfo");
+
+		// データを削除する。上のsession情報のcodeを取得
+		usersRepository.deleteById(user.getCode());
+		// 削除確定
+		usersRepository.flush();
+
+		mv.setViewName("login");
+		return mv;
+
+	}
+
 }
