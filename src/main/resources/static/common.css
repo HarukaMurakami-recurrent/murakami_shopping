@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+
+body{
+    position:relative;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#top-menu{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    /* 背景色: カラーコードで検索 */
+    background-color: 	#FFE4E1;
+
+    /* 下線 */
+    border-bottom: 1px solid 	#9999FF;
+
+    /* 内部に取る余白 */
+    padding: 10px;
+}
+
+#content-body{
+    display: block;
+    position: initial;
+
+    /* 表示開始位置調整用 */
+    padding-top: 50px;
+}
+
+.itemview-1{
+    border-collapse: collapse;
+    border-spacing: 5px;
+    width: 90%;
+    margin: auto;
+}
+
+.itemview-1 tr{
+    /* 背景色: カラーコードで検索 */
+    border: 1px solid #ccc;
+    background-color: 	#FFE4E1;
+}
+
+.itemview-1 td:first-child{
+    width: 150px;
+}
+
+.itemview-1 td:first-child > img{
+    width: 150px;
+    border: 1px solid #ccc;
+    background-color: #FFFF99;
+}
+
+.itemview-1 td:not(:first-child){
+    text-align: left;
+    vertical-align: top;
+    position: relative;
+}
+
+.itemview-1 td:not(:first-child) > * {
+    margin: 0;
+    padding: 5px;
+}
+
+.buttons{
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    bottom: 0;
+}
+
+.buttons button{
+    background-color: white;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.buttons button:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+a.btn--raised {
+    color: #eb6877;
+    text-shadow: -1px -1px 1px rgba(255, 255, 255, .44), 1px 1px 1px #4a0a11;
+}

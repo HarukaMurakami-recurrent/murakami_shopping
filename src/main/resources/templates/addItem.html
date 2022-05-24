@@ -37,24 +37,22 @@
 
 			<tr>
 				<td>カテゴリー</td>
-				<td><input type="password" name="category_key"></td>
+				<td><input type="text" name="category_key"></td>
 
 			</tr>
 			
 			<tr>
 				<td>発送までの日数</td>
-				<td><input type="password" name="category_key"></td>
+				<td><input type="text" name="delivary_days "></td>
 
 			</tr>
 			
-			<tr>
-				<td>今日の日付</td>
-				<td><input type="password" name="category_key"></td>
-
-			</tr>
+			
 		</table>
 
 		<input type="submit" value="出品する">
+		
+		<span th:text="${message}" style="color: red"></span> 
 
 	</form>
 

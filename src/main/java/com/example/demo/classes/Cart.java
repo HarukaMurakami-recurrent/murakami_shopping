@@ -36,8 +36,9 @@ public class Cart {
 			int i = existedItem.getQuantity();
 			i += quantity ;
 			existedItem.setQuantity(i);
-			recalcTotal();
+			
 		}
+		recalcTotal();
 	}
 	
 	public void deleteCart(int itemCode) {

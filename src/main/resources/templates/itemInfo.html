@@ -2,9 +2,67 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>商品情報</title>
 </head>
 <body>
 
+	<h1>商品情報</h1>
+	
+	<form th:action="|/updateItem/${code}|" method="post">
+
+	<table border="1">
+		<tr>
+			<td>商品名</td>
+			<td th:text="${item.name}"></td>
+		</tr>
+		<tr>
+			<td>値段</td>
+			<td th:text="${item.price}"></td>
+		</tr>
+		<tr>
+			<td>写真</td>
+			<td th:text="${item.picture}"></td>
+		</tr>
+		<tr>
+			<td>在庫数</td>
+			<td th:text="${item.stock}"></td>
+		</tr>
+		<tr>
+			<td>発送までの日数</td>
+			<td th:text="${item.delivaryDays}"></td>
+		</tr>
+	</table>
+
+	<h2>編集する</h2>
+
+	<!-- アカウント更新 -->
+	
+		<table border="1">
+			<tr>
+				<td>商品名</td>
+				<td><input type="text" name="name"></td>
+			</tr>
+
+			<tr>
+				<td>値段</td>
+				<td><input type="text" name="price"></td>
+			</tr>
+			<tr>
+				<td>写真</td>
+				<td><input type="text" name="picture"></td>
+			</tr>
+			<tr>
+				<td>在庫数</td>
+				<td><input type="text" name="stock"></td>
+			</tr>
+			<tr>
+				<td>発送までの日数</td>
+				<td><input type="text" name="delivaryDays"></td>
+			</tr>
+
+		</table>
+		
+		<input type="submit" value="確定">
+	</form>
 </body>
 </html>

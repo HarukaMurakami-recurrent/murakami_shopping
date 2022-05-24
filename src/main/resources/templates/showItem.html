@@ -3,20 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <title>アイテム一覧</title>
+
+<link rel="stylesheet" href="/common.css">
 </head>
 <body>
-	<h1>アイテム一覧</h1>
+
+	<h1 style="text-align:center">
+	<font face="ＭＳ Ｐ明朝">アイテム一覧</font>
+	</h1>
 	
 	<br>
 	
 	<a href="/accountInfo">ユーザー情報</a>
+	<table class="itemview-1">
+            <!-- このtrにeach属性をつけてあげてください -->
+            <tr th:each="item:${items}">
+                <td>
+                    <!-- 画像 srcは「th:src」でそれぞれのFileに即してあげてください -->
+                    <img th:src="|/${item.picture}|" />
+                </td>
 
-	<table border="1">
+                <td>
+                    <p>
+                        <b th:text="${item.name}"></b>
+                        &emsp;/在庫&nbsp;<span></span>
+                    </p>
+                    <p>
+                        ￥<span th:text="${item.price}"></span>
+                    </p>
+                    <!-- 改行が必要なごとに、pタグでパーテーションを作成してください -->
+                    <p>
+                        商品説明とか
+                    </p>
+                    <p class="buttons">
+                        <!-- 必要なボタンをこちらに配置してください -->
+                        <a th:href="|/itemDetail/${item.code}|">
+                            <button>詳細画面へ</button>
+                        </a>
+                        <a>
+                            <button>カートに追加</button>
+                        </a>
+                        <a th:href="|/updateItem/${item.code}|">
+                            <button>変更</button>
+                        </a>
+                        <a th:href="|/deleteItem/${item.code}|">
+                            <button>削除</button>
+                        </a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+	<!-- <table border="1">
 		<tr>
 			<td>画像</td>
 			<td>名前</td>
 			<td>値段</td>
 			<td>詳細</td>
+			<td>変更</td>
+			<td>削除</td>
 		</tr>
 
 		<tr th:each="item:${items}">
@@ -30,13 +75,29 @@
 				<button> 詳細</button>
 			</a>
 			</td>
+			<td>
+			<a th:href="|/updateItem/${item.code}|">
+				<button> 変更</button>
+			</a>
+			</td>
+			<td>
+			<a th:href="|/deleteItem/${item.code}|">
+				<button> 削除</button>
+			</a>
+			</td>
 		</tr>
 
-	</table>
-	
-	<a href="/addItem">出品する</a>
-	
-	<span th:replace="logout"></span>
+	</table>-->
+
+
+
+	<h3 style="text-align: center">
+		<a href="/addItem" class="btn btn--pink btn--raised btn--cubic">
+			出品する <i class="fas fa-angle-right fa-position-right"></i>
+
+			<hr> <br> <span th:replace="logout"></span>
+		</a>
+	</h3>
 
 
 </body>

@@ -64,7 +64,6 @@ public class Items {
 			Integer categoryKey,
 			Integer delivaryDays,
 			Integer sellerUserCode,
-			Date date,
 			Integer deleteFlag
 		   ) {
 		super();
@@ -76,11 +75,38 @@ public class Items {
 		this.categoryKey = categoryKey;
 		this.delivaryDays = delivaryDays;
 		this.sellerUserCode = sellerUserCode;
-		this.date = date;
+		this.date = new Date();
 		this.deleteFlag = deleteFlag;
 		
 	}
 	
+//	public Items(
+//			Integer code,
+//			String name,
+//			Integer price,
+//			String picture,
+//			Integer stock,
+//			Integer delivaryDays
+//			) {
+//		super();
+//		this.price = price;
+//		this.name = name;
+//		this.price = price;
+//		this.picture = picture;
+//		this.stock = stock;;
+//		this.delivaryDays = delivaryDays;
+//	}
+	
+	public Items(Integer code, String name, Integer price, String picture, Integer stock, Integer delivaryDays) {
+		super();
+		this.code = code;
+		this.name = name;
+		this.price = price;
+		this.picture = picture;
+		this.stock = stock;
+		this.delivaryDays = delivaryDays;
+	}
+
 	//空のコンストラクタ必要
 	public Items() {
 		super();
