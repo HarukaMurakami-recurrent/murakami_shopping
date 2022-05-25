@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>新規登録</title>
+<link rel="stylesheet" href="/common.css">
 </head>
 <body>
-	<h1>新規登録</h1>
+	<h1 style="text-align:center">新規登録</h1>
 
 	<span th:text="${message}" style="color: red"></span>
 
 	<form action="/newAccount" method="post">
 
 		<!-- 新規登録情報入力フォーム -->
-		<table>
+		<table class="itemview-6">
 			<tr>
 				<td>名前</td>
 				<td><input type="text" name="name"></td>
@@ -43,8 +44,10 @@
 
 			</tr>
 		</table>
+		
+		<br>
 
-		<input type="submit" value="登録">
+		<input type="submit" value="登録" class="btn5"  style="display:block;margin: auto;">
 
 	</form>
 

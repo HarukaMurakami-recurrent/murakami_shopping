@@ -3,42 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <title>ユーザー情報更新</title>
+<link rel="stylesheet" href="/common.css">
 </head>
 <body>
 
 	<h1>ユーザ情報</h1>
 
-	<table border="1">
+	<table class="itemview-6">
 		<tr>
-			<td>名前</td>
+			<td>名前:</td>
 			<td th:text="${session.accountInfo.name}"></td>
 		</tr>
 
 		<tr>
-			<td>住所</td>
+			<td>住所:</td>
 			<td th:text="${session.accountInfo.address}"></td>
 		</tr>
 		<tr>
-			<td>電話番号</td>
+			<td>電話番号:</td>
 			<td th:text="${session.accountInfo.tel}"></td>
 		</tr>
 		<tr>
-			<td>メールアドレス</td>
+			<td>メールアドレス:</td>
 			<td th:text="${session.accountInfo.email}"></td>
 		</tr>
 		<tr>
-			<td>パスワード</td>
+			<td>パスワード:</td>
 			<td th:text="${session.accountInfo.pass}"></td>
 		</tr>
 
 	</table>
-
-	<h2>編集する</h2>
+	
+	<br>
 
 	<!-- アカウント更新 -->
 	<form action="/update" method="post">
 
-		<table border="1">
+		<table class="itemview-6">
 			<tr>
 				<td>名前</td>
 				<td><input type="text" name="name"></td>
@@ -62,10 +63,11 @@
 			</tr>
 
 		</table>
-
+		
+	<br>
 		<!-- 未入力があった場合のメッセージ表示 -->
 		<span th:text="${message}" style="color: red"></span> 
-		<input type="submit" value="確定">
+		<input type="submit" value="変更を確定" class="btn5"  style="display:block;margin: auto;">
 	</form>
 
 	<br>
@@ -73,7 +75,7 @@
 	<!-- アカウント削除form -->
 	<form action="/accountDelete" method="post">
 
-		<input type="submit" value="アカウント削除">
+		<input type="submit" value="アカウント削除" class="btn5"  style="display:block;margin: auto;">
 
 	</form>
 

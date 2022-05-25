@@ -3,14 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>商品追加</title>
+<link rel="stylesheet" href="/common.css">
 </head>
 <body>
+
+	<h1>出品する</h1>
 
 
 		<form action="/addItem" method="post">
 
 		<!-- 新規商品登録情報入力フォーム -->
-		<table>
+		<table class="itemview-6">
 			<tr>
 				<td>商品名</td>
 				<td><input type="text" name="name"></td>
@@ -49,10 +52,14 @@
 			
 			
 		</table>
-
-		<input type="submit" value="出品する">
 		
 		<span th:text="${message}" style="color: red"></span> 
+		
+		<br>
+		
+		<input type="submit" value="出品する" class="btn5"  style="display:block;margin: auto;">
+		
+		
 
 	</form>
 

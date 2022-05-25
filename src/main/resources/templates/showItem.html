@@ -9,12 +9,21 @@
 <body>
 
 	<h1 style="text-align:center">
-	<font face="ＭＳ Ｐ明朝">アイテム一覧</font>
+	商品一覧
 	</h1>
 	
 	<br>
 	
-	<a href="/accountInfo">ユーザー情報</a>
+	<div class='btn4'>
+	<a href="/accountInfo">ユーザー情報を見る</a>
+	</div>
+	
+	<div class='btn3'>
+	<a href="/addItem">出品する</a>
+	</div>
+	
+	<br>
+	
 	<table class="itemview-1">
             <!-- このtrにeach属性をつけてあげてください -->
             <tr th:each="item:${items}">
@@ -26,30 +35,26 @@
                 <td>
                     <p>
                         <b th:text="${item.name}"></b>
-                        &emsp;/在庫&nbsp;<span></span>
                     </p>
                     <p>
                         ￥<span th:text="${item.price}"></span>
                     </p>
                     <!-- 改行が必要なごとに、pタグでパーテーションを作成してください -->
-                    <p>
-                        商品説明とか
-                    </p>
-                    <p class="buttons">
+                    <div class="buttons">
                         <!-- 必要なボタンをこちらに配置してください -->
                         <a th:href="|/itemDetail/${item.code}|">
                             <button>詳細画面へ</button>
                         </a>
-                        <a>
-                            <button>カートに追加</button>
-                        </a>
+                        <form th:action="|/cart/add/${item.code}|" method="post">
+                            <input type="submit" value="カートに追加">
+                        </form>
                         <a th:href="|/updateItem/${item.code}|">
                             <button>変更</button>
                         </a>
                         <a th:href="|/deleteItem/${item.code}|">
                             <button>削除</button>
                         </a>
-                    </p>
+                    </div>
                 </td>
             </tr>
         </table>
@@ -92,11 +97,9 @@
 
 
 	<h3 style="text-align: center">
-		<a href="/addItem" class="btn btn--pink btn--raised btn--cubic">
-			出品する <i class="fas fa-angle-right fa-position-right"></i>
+		 <i class="fas fa-angle-right fa-position-right"></i>
 
-			<hr> <br> <span th:replace="logout"></span>
-		</a>
+		 <span th:replace="logout"></span>
 	</h3>
 
 

@@ -3,24 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>商品詳細</title>
+<link rel="stylesheet" href="/common.css">
 </head>
 <body>
-	<h1>商品詳細</h1>
+	<h1 style="text-align:center">
+	<font face="ＭＳ Ｐ明朝">
+	商品詳細
+	</font>
+	</h1>
 	
 	<form th:action="|/cart/add/${code}|" method="post">
 	
-	<table border="1">
+	<table class="itemview-3">
 		<tr>
-			<td th:text="${item.name}"></td>
-			<td>
+			<td style="text-align: center;">
 				<img  th:src="|/${item.picture}|">
 			</td>
-			<td th:text="${item.price}"></td>
-			<td>個数</td>
-			<td>
-				<input type="submit" value="カートに入れる">
+			<td style="text-align: left;">
+				<font size="5" face="ＭＳ Ｐ明朝" th:text="${item.name}"> </font>
 			</td>
-			
+		</tr>
+		<tr>
+			<td></td>
+			<td th:text="|値段:${item.price}|"></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align: center;">
+				<input type="submit" value="カートに入れる" class="btn5">
+			</td>
 		</tr>
 	</table>  
 	</form>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>カートの中身</title>
+<link rel="stylesheet" href="/common.css">
 </head>
 <body>
 
@@ -10,9 +11,10 @@
 	
 	<form action="/purchaseCart">
 
-	<table border="1">
+	<table class="itemview-4">
 		<tr>
 			<td>商品名</td>
+			<td></td>
 			<td>値段</td>
 			<td>個数</td>
 			<td>合計</td>
@@ -22,20 +24,30 @@
 		
 		<tr th:each="item : ${items}">
 			<td th:text="${item.value.name}"></td>
-			<td th:text="${item.value.price}"></td>
-			<td th:text="${item.value.quantity}"></td>
-			<td th:text="${item.value.price * item.value.quantity}"></td>
+			<td>
+				<img th:src="|/${item.value.picture}|" />
+			</td>
+			<td th:text="|${item.value.price}円|"></td>
+			<td th:text="|${item.value.quantity}個|"></td>
+			<td th:text="|${item.value.price * item.value.quantity}円|"></td>
 			<td>
 				<a th:href="|/cart/delete/${item.value.code}|">削除</a>
 			</td>
 		</tr>
 	</table>
 	
-	<span th:text="${total}"></span>
+	<table class="itemview-5">
+	
+	<tr>
+		<td  th:text="|総額:${total}円|"></td>
+	</tr>
+	
+	</table>
 	
 	<br>
 	
-	<input type="submit" value="購入する">
+	
+	<input type="submit" value="購入する" class="submitButton" style="display:block;margin: auto;">
 	
 	<br>
 	

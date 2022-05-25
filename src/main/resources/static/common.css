@@ -1,11 +1,30 @@
-@charset "UTF-8";
-
+@import url(http://fonts.googleapis.com/css?family=Train+One);
+@import url(http://fonts.googleapis.com/css?family=Zen+Maru+Gothic);
 
 body{
     position:relative;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+    font-family: 'Zen Maru Gothic';
+}
+
+button,
+.buttons input[type="submit"]{
+    background-color: white;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button:hover,
+.buttons input[type="submit"]:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+img{
+    width: 100%;
 }
 
 #top-menu{
@@ -14,10 +33,10 @@ body{
     left: 0;
     width: 100%;
     /* 背景色: カラーコードで検索 */
-    background-color: 	#FFE4E1;
+    background-color: #f0ffff;
 
     /* 下線 */
-    border-bottom: 1px solid 	#9999FF;
+    border-bottom: 1px solid #aaa;
 
     /* 内部に取る余白 */
     padding: 10px;
@@ -41,7 +60,6 @@ body{
 .itemview-1 tr{
     /* 背景色: カラーコードで検索 */
     border: 1px solid #ccc;
-    background-color: 	#FFE4E1;
 }
 
 .itemview-1 td:first-child{
@@ -51,7 +69,7 @@ body{
 .itemview-1 td:first-child > img{
     width: 150px;
     border: 1px solid #ccc;
-    background-color: #FFFF99;
+    background-color: #fff;
 }
 
 .itemview-1 td:not(:first-child){
@@ -65,26 +83,280 @@ body{
     padding: 5px;
 }
 
-.buttons{
+.itemview-1 .buttons{
     position: absolute;
     display: inline-block;
     right: 0;
     bottom: 0;
 }
 
-.buttons button{
-    background-color: white;
-    padding: 5px 10px;
-    border: 1px solid #ddd;
+.itemview-1 .buttons form{
+    display: inline-block;
+}
+
+.itemview-2{
+    width: 90%;
+    margin: auto;
+}
+
+.itemview-2 > div{
+    width: 30%;
+    float: left;
     border-radius: 5px;
+    border: 1px solid grey;
+    margin: 5px;
+    padding: 5px;
 }
 
-.buttons button:hover{
-    opacity: 0.7;
-    cursor: pointer;
+
+.itemview-2 div p {
+    padding: 0px 10px;
+    white-space: nowrap;
 }
 
-a.btn--raised {
-    color: #eb6877;
-    text-shadow: -1px -1px 1px rgba(255, 255, 255, .44), 1px 1px 1px #4a0a11;
+
+.itemview-2 .buttons{
+    text-align: center;
+}
+
+.itemview-3{
+	background-color: #CCFFFF;
+	border-collapse: collapse;
+	width: 90%;
+	
+}
+
+.itemview-3 tr{
+    /* 背景色: カラーコードで検索 */
+    border: 1px solid #ccc;
+}
+
+.itemview-3 td:first-child > img{
+    width: 200px;
+    border: 1px solid #ccc;
+    background-color: #FFFF99;
+}
+
+.itemview-3 td:nth-child(2){
+    text-align: left;
+    vertical-align: center;
+    position: relative;
+}
+
+.itemview-4 {
+	width: 500px;
+	text-align: left;
+	border-collapse: collapse;
+	position: center;
+	background-color: 	#F0F8FF;
+	border-collapse: collapse;
+	width: 90%;
+}
+
+.itemview-4 td {
+ padding: 10px;
+ border-bottom: solid 1px #748ca5;
+}
+
+.itemview-4 td:nth-child(2) > img{
+    width: 150px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.itemview-5 {
+	width: 500px;
+	text-align: right;
+	border-collapse: collapse;
+	position: center;
+	background-color: 	#CCFFFF;
+	border-collapse: collapse;
+	width: 90%;
+}
+
+.itemview-5 td {
+ padding: 10px;
+ border-bottom: solid 1px #748ca5;
+}
+
+/**新規登録画面とログイン画面*/
+
+.itemview-6{
+    border-collapse: collapse;
+    border-spacing: 5px;
+    width: 90%;
+    margin: auto;
+}
+
+.itemview-6 td:first-child{
+	text-align: right;
+    width: 150px;
+}
+
+.itemview-6 td:not(:first-child){
+    text-align: left;
+    vertical-align: top;
+    position: relative;
+    width: 150px;
+}
+
+
+
+h1 {
+	text-align: center;
+  position: relative;
+  padding: 0.5em;
+  background: #a6d3c8;
+  color: white;
+  font-family: 'Train One';
+}
+
+
+h1::before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);
+}
+
+.button_line006 a {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 220px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+}
+.button_line006 a:before,
+.button_line006 a:after {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  content: '';
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  background: #000;
+}
+
+.button_line006 a:before {
+  top: 0;
+  left: 0;
+}
+
+.button_line006 a:after {
+  right: 0;
+  bottom: 0;
+}
+
+.button_line006 a:hover:before,
+.button_line006 a:hover:after {
+  width: 0;
+}
+
+.submitButton {
+  
+  border-radius : 50%;          /* 角丸       */
+  font-size     : 19pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 20px 44px;   /* 余白       */
+  background    : #a6d3c8;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  opacity       : 1;           /* 透明度     */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 2px 2px 18px #a6d3c8;  /* 影の設定 */
+}
+.submitButton:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  opacity       : 0.8;         /* カーソル時透明度 */
+}
+
+
+.btn3{
+    width:300px;
+    height:100px;
+    line-height:100px;
+}
+.btn3 a{
+    display:block;
+    width:100%;
+    height:100%;
+    text-decoration: none;
+    background:#AFEEEE;
+    text-align:center;
+    color:#FFFFFF;
+    font-size:30px;
+    font-weight:bold;
+    border-radius:27px;
+    -webkit-border-radius:27px;
+    -moz-border-radius:27px;
+    text-shadow:1px 0px 8px #DEDEDE ;
+    transition: all 0.2s ease;
+}
+.btn3 a:hover{
+    background:#AFEEEE;
+    color:#FFFFFF;
+    margin-left:5px;
+    margin-top:5px;
+    box-shadow:none;
+}
+
+.btn4{
+	margin-left: auto;
+    width: 300px;
+    height: 100px;
+    line-height: 100px;
+}
+.btn4 a{
+    display:block;
+    width:100%;
+    height:100%;
+    text-decoration: none;
+    background:#AFEEEE;
+    text-align:center;
+    color:#FFFFFF;
+    font-size:30px;
+    font-weight:bold;
+    border-radius:27px;
+    -webkit-border-radius:27px;
+    -moz-border-radius:27px;
+    text-shadow:1px 0px 8px #DEDEDE ;
+    transition: all 0.2s ease;
+}
+.btn4 a:hover{
+    background:#AFEEEE;
+    color:#FFFFFF;
+    margin-left:5px;
+    margin-top:5px;
+    box-shadow:none;
+}
+
+/**出品するボタン、ログイン、新規登録ボタン */
+.btn5 {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 9pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 7px 44px;   /* 余白       */
+  background    : rgba(0, 179, 179, 0.76);     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  opacity       : 1;           /* 透明度     */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 3px 3px 11px #666666;  /* 影の設定 */
+  outline       : none;
+  border        : none;
+}
+.btn5:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  opacity       : 0.8;         /* カーソル時透明度 */
 }

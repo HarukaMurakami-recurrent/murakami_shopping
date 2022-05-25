@@ -53,6 +53,7 @@ public class ItemController {
 	// 購入するボタンをおしたら画面遷移
 	@RequestMapping("/purchaseCart")
 	public String purchaseCart() {
+		session.invalidate();
 
 		return "purchaseCart";
 	}

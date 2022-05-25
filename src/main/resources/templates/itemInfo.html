@@ -3,41 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <title>商品情報</title>
+<link rel="stylesheet" href="/common.css">
 </head>
 <body>
 
 	<h1>商品情報</h1>
+	<br>
+	<h2 style="text-align:center">編集する</h2>
 	
 	<form th:action="|/updateItem/${code}|" method="post">
 
-	<table border="1">
+	<table  class="itemview-6">
 		<tr>
-			<td>商品名</td>
+			<td>商品名:</td>
 			<td th:text="${item.name}"></td>
 		</tr>
 		<tr>
-			<td>値段</td>
+			<td>値段:</td>
 			<td th:text="${item.price}"></td>
 		</tr>
 		<tr>
-			<td>写真</td>
+			<td>写真:</td>
 			<td th:text="${item.picture}"></td>
 		</tr>
 		<tr>
-			<td>在庫数</td>
+			<td>在庫数:</td>
 			<td th:text="${item.stock}"></td>
 		</tr>
 		<tr>
-			<td>発送までの日数</td>
+			<td>発送までの日数:</td>
 			<td th:text="${item.delivaryDays}"></td>
 		</tr>
 	</table>
 
-	<h2>編集する</h2>
+
 
 	<!-- アカウント更新 -->
 	
-		<table border="1">
+		<table  class="itemview-6">
 			<tr>
 				<td>商品名</td>
 				<td><input type="text" name="name"></td>

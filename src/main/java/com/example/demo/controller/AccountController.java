@@ -38,6 +38,12 @@ public class AccountController {
 
 	@Autowired
 	UsersRepository usersRepository;
+	
+	//トップ画面の表示
+	@RequestMapping("/")
+	public String top() {
+		return "top";
+	}
 
 	// 新規登録画面の表示
 	@RequestMapping("/newAccount")
@@ -55,7 +61,7 @@ public class AccountController {
 	@RequestMapping("/logout")
 	public String logout() {
 		// ログアウト独特の処理もここに記述
-		return login();
+		return "top";
 	}
 
 	// 登録ボタン押したときの処理<form action="/newAccount">

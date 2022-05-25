@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <title>ログイン</title>
+<link rel="stylesheet" href="/common.css">
 </head>
 <body>
 
-	<h1>ログイン</h1>
+	<h1 style="text-align:center">ログイン</h1>
 		<span th:text="${message}" style="color: red"></span>
 	
 	
 	<!-- ログインボタンを押したらアイテム一覧へ飛ぶ -->
 	<form action="login" method="post">
 
-	<table>
+	<table class="itemview-6">
 		<tr>
 			<td>名前</td>
 			<td><input type="text" name="name"></td>
@@ -26,8 +27,10 @@
 
 		</tr>
 	</table>
+	<br>
+	
 
-	<input type="submit" value="ログイン">
+	<input type="submit" value="ログイン" class="btn5"  style="display:block;margin: auto;">
 	</form>
 	
 	
