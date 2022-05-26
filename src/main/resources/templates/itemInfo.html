@@ -7,39 +7,37 @@
 </head>
 <body>
 
-	<h1>商品情報</h1>
-	<br>
-	<h2 style="text-align:center">編集する</h2>
+	<h1>商品情報の変更</h1>
 	
+	<!-- 商品情報の詳細を表示 -->
 	<form th:action="|/updateItem/${code}|" method="post">
 
-	<table  class="itemview-6">
-		<tr>
-			<td>商品名:</td>
-			<td th:text="${item.name}"></td>
-		</tr>
-		<tr>
-			<td>値段:</td>
-			<td th:text="${item.price}"></td>
-		</tr>
-		<tr>
-			<td>写真:</td>
-			<td th:text="${item.picture}"></td>
-		</tr>
-		<tr>
-			<td>在庫数:</td>
-			<td th:text="${item.stock}"></td>
-		</tr>
-		<tr>
-			<td>発送までの日数:</td>
-			<td th:text="${item.delivaryDays}"></td>
-		</tr>
-	</table>
+		<table  class="itemview-6">
+			<tr>
+				<td>商品名:</td>
+				<td th:text="${item.name}"></td>
+			</tr>
+			<tr>
+				<td>値段:</td>
+				<td th:text="${item.price}"></td>
+			</tr>
+			<tr>
+				<td>写真:</td>
+				<td th:text="${item.picture}"></td>
+			</tr>
+			<tr>
+				<td>在庫数:</td>
+				<td th:text="${item.stock}"></td>
+			</tr>
+			<tr>
+				<td>発送までの日数:</td>
+				<td th:text="${item.delivaryDays}"></td>
+			</tr>
+		</table>
 
+		<hr>
 
-
-	<!-- アカウント更新 -->
-	
+		<!-- アカウント更新の入力 -->
 		<table  class="itemview-6">
 			<tr>
 				<td>商品名</td>
@@ -65,7 +63,20 @@
 
 		</table>
 		
-		<input type="submit" value="確定">
+		<!-- エラーメッセージを表示 -->
+		<h4 style="text-align: center">
+			<span th:text="${message}" style="color: red"></span>
+		</h4>
+		
+		<hr>
+		
+		<!-- 確定ボタン -->
+		<input type="submit" value="確定"  class="btn5"  style="display:block;margin: auto;">
 	</form>
+	
+	<!-- 商品一覧へ戻るリンク -->
+	<h3 style="text-align: center">
+		<a href="/showItem">商品一覧へ戻る</a>
+	</h3>
 </body>
 </html>

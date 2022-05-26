@@ -8,45 +8,39 @@
 <body>
 	<h1 style="text-align:center">新規登録</h1>
 
+	<!-- エラーメッセージを表示 -->
 	<span th:text="${message}" style="color: red"></span>
 
+	<!-- 登録ボタン押したときのフォーム -->
 	<form action="/newAccount" method="post">
 
-		<!-- 新規登録情報入力フォーム -->
+		<!-- 新規登録情報入力 -->
 		<table class="itemview-6">
 			<tr>
 				<td>名前</td>
 				<td><input type="text" name="name"></td>
-
 			</tr>
-
 			<tr>
 				<td>住所</td>
 				<td><input type="text" name="address"></td>
-
 			</tr>
-
 			<tr>
 				<td>電話番号</td>
 				<td><input type="text" name="tel"></td>
-
 			</tr>
-
 			<tr>
 				<td>メールアドレス</td>
 				<td><input type="text" name="email"></td>
-
 			</tr>
-
 			<tr>
 				<td>パスワード</td>
 				<td><input type="password" name="pass"></td>
-
 			</tr>
 		</table>
-		
+
 		<br>
 
+		<!-- 登録ボタン -->
 		<input type="submit" value="登録" class="btn5"  style="display:block;margin: auto;">
 
 	</form>

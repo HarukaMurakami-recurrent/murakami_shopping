@@ -37,11 +37,11 @@ public class CartController {
 	
 	@Autowired
 	PaymentsRepository paymentsRepository;
-//	
+	
 	@Autowired
 	UsersRepository usersRepository;
 
-	
+	//指定したコードの商品をカートに追加する
 	@RequestMapping(value="/cart/add/{code}" ,method=RequestMethod.POST)
 	public ModelAndView addCart(
 			@PathVariable("code") int code,
@@ -52,6 +52,7 @@ public class CartController {
 		//セッションからカート情報を取得
 		Cart cart = (Cart)session.getAttribute("cart");
 		
+		//セッションのカートが空だった場合
 		if(cart == null) {
 			cart = new Cart();
 			//sessionにカート情報を追加
@@ -64,12 +65,12 @@ public class CartController {
 		
 		mv.addObject("items",cart.getItems());
 		mv.addObject("total",cart.getTotal());
-		
+		//カートの中身を表示
 		mv.setViewName("cart");
 		return mv;
 	}
 	
-	//カートから削除
+	//指定したコードの商品をカートから削除
 	@RequestMapping("/cart/delete/{code}")
 	public ModelAndView deleteCart(
 			@PathVariable(name="code") int code,
@@ -82,7 +83,7 @@ public class CartController {
 		
 		mv.addObject("items",cart.getItems());
 		mv.addObject("total",cart.getTotal());
-		
+		//カートの中身を表示
 		mv.setViewName("cart");
 		return mv;
 	}

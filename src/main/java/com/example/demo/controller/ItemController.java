@@ -40,11 +40,11 @@ public class ItemController {
 	@Autowired
 	UsersRepository usersRepository;
 
-//	//商品詳細ページを表示
+	//指定したコードの商品詳細ページを表示
 	@RequestMapping(value = "/itemDetail/{code}")
 	public ModelAndView itemDetail(@PathVariable("code") int code, ModelAndView mv) {
 
-		// itemから1件取得
+		// itemから商品コードを1件取得
 		mv.addObject("item", itemsRepository.findById(code).get());
 		mv.setViewName("itemDetail");
 		return mv;
@@ -53,20 +53,20 @@ public class ItemController {
 	// 購入するボタンをおしたら画面遷移
 	@RequestMapping("/purchaseCart")
 	public String purchaseCart() {
-		session.invalidate();
-
+		//カートのセッション情報を消去！
+		session.removeAttribute("cart");
+		//購入後の画面へ遷移
 		return "purchaseCart";
 	}
 
 	// 商品追加ページを表示
 	@RequestMapping(value = "/addItem")
 	public String addItem() {
-
 		return "addItem";
 
 	}
 
-	// 出品ボタン押したときの処理<a href="/addItem">出品する</a>
+	// 出品ボタン押したときの処理<a href="/addItem">
 	// DBに登録、未入力チェックをおこなう
 	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
 	public ModelAndView addItem(@RequestParam(name = "name") String name,
@@ -74,23 +74,23 @@ public class ItemController {
 			@RequestParam(name = "picture") String picture,
 			@RequestParam(name = "stock", defaultValue = "0") Integer stock,
 			@RequestParam(name = "category_key", defaultValue = "0") Integer category_key,
-			@RequestParam(name = "delivary_days ", defaultValue = "0") Integer delivary_days,
+			@RequestParam(name = "delivary_days ", defaultValue = "0") Integer delivaryDays,
 
 			ModelAndView mv) {
 
 		// 未入力チェック
 
-		// 商品登録画面に未入力があった場合
+		// 商品登録画面に未入力,intがマイナスだった場合
 		if (name == null || name.length() == 0 || picture == null || picture.length() == 0 || price <= 0 || stock <= 0
-				|| category_key <= 0 || delivary_days <= 0) {
+				|| delivaryDays <= 0) {
 
-			// 商品登録ページに「未入力」の表示
-			mv.addObject("message", "もう一度入力");
+			// 商品登録ページにエラーメッセージの表示
+			mv.addObject("message", "もう一度入力してください");
 			mv.setViewName("addItem");
 		} else {
 			// すべて入力があった場合
 			// DBへ登録して、
-			Items item = new Items(null, name, price, picture, stock, category_key, delivary_days, null, null);
+			Items item = new Items(name, price, picture, stock, delivaryDays);
 			itemsRepository.saveAndFlush(item);
 
 			List<Items> itemList = itemsRepository.findAll();
@@ -102,9 +102,10 @@ public class ItemController {
 		return mv;
 	}
 
-	// 出品した商品の情報閲覧、変更画面表示
+	// 指定したコードの商品の情報閲覧、変更画面表示
 	@RequestMapping("/updateItem/{code}")
 	public ModelAndView itemInfo(@PathVariable("code") int code, ModelAndView mv) {
+		//商品コードを取得
 		mv.addObject("item", itemsRepository.findById(code).get());
 		mv.addObject("code", code);
 		mv.setViewName("itemInfo");
@@ -113,15 +114,23 @@ public class ItemController {
 
 	// 出品商品の変更を確定した時の処理<form action="|/updateItem/${code}|" method="post">
 	@RequestMapping(value = "/updateItem/{code}", method = RequestMethod.POST)
-	public ModelAndView updateItem(@PathVariable("code") int code, @RequestParam("name") String name,
-			@RequestParam("price") int price, @RequestParam("picture") String picture, @RequestParam("stock") int stock,
-			@RequestParam("delivaryDays") int delivaryDays, ModelAndView mv) {
+	public ModelAndView updateItem(
+			@PathVariable(name="code") int code, 
+			@RequestParam(name="name") String name,
+			@RequestParam(name="price", defaultValue = "0") int price, 
+			@RequestParam(name="picture") String picture, 
+			@RequestParam(name="stock", defaultValue = "0") int stock,
+			@RequestParam(name="delivaryDays", defaultValue = "0") int delivaryDays, 
+			ModelAndView mv) {
 
 		// 未入力のチェック
-		if (name == null || name.length() == 0) {
+		if (name == null || name.length() == 0 || picture == null || picture.length() == 0 || price <= 0 || stock <= 0
+				|| delivaryDays <= 0) {
 			// 画面に未入力の文字を表示
+			mv.addObject("item", itemsRepository.findById(code).get());
+			mv.addObject("code", code);
 			mv.addObject("message", "未入力があります");
-			mv.setViewName("showItem");
+			mv.setViewName("itemInfo");
 		} else {
 			// すべての入力があった場合
 			// DB,itemsからデータを取得

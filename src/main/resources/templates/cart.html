@@ -9,49 +9,53 @@
 
 	<h1>カートの中身</h1>
 	
+	<!-- 購入するフォーム -->
 	<form action="/purchaseCart">
 
-	<table class="itemview-4">
-		<tr>
-			<td>商品名</td>
-			<td></td>
-			<td>値段</td>
-			<td>個数</td>
-			<td>合計</td>
-			<td></td>
-			<!-- <td th:text="${item.value.price * item.value.quantity}"></td> -->
-		</tr>
+		<table class="itemview-4">
+			<tr>
+				<td>商品名</td>
+				<td></td>
+				<td>値段</td>
+				<td>個数</td>
+				<td>合計</td>
+				<td></td>
+				<!-- <td th:text="${item.value.price * item.value.quantity}"></td> -->
+			</tr>
+			
+			<!-- カートの中身の商品 -->
+			<tr th:each="item : ${items}">
+				<td th:text="${item.value.name}"></td>
+				<td>
+					<img th:src="|/${item.value.picture}|" />
+				</td>
+				<td th:text="|${item.value.price}円|"></td>
+				<td th:text="|${item.value.quantity}個|"></td>
+				<td th:text="|${item.value.price * item.value.quantity}円|"></td>
+				<td>
+					<a th:href="|/cart/delete/${item.value.code}|">削除</a>
+				</td>
+			</tr>
+		</table>
 		
-		<tr th:each="item : ${items}">
-			<td th:text="${item.value.name}"></td>
-			<td>
-				<img th:src="|/${item.value.picture}|" />
-			</td>
-			<td th:text="|${item.value.price}円|"></td>
-			<td th:text="|${item.value.quantity}個|"></td>
-			<td th:text="|${item.value.price * item.value.quantity}円|"></td>
-			<td>
-				<a th:href="|/cart/delete/${item.value.code}|">削除</a>
-			</td>
-		</tr>
-	</table>
-	
-	<table class="itemview-5">
-	
-	<tr>
-		<td  th:text="|総額:${total}円|"></td>
-	</tr>
-	
-	</table>
-	
-	<br>
-	
-	
-	<input type="submit" value="購入する" class="submitButton" style="display:block;margin: auto;">
-	
-	<br>
-	
-	<a href="/showItem">商品一覧へ戻る</a>
+		<!-- 総額 -->
+		<table class="itemview-5">
+			<tr>
+				<td  th:text="|総額:${total}円|"></td>
+			</tr>
+		</table>
+		
+		<br>
+		
+		<!-- 購入するボタン -->
+		<input type="submit" value="購入する" class="submitButton" style="display:block;margin: auto;">
+		
+		<br>
+		
+		<!-- 商品一覧へ戻るリンク -->
+		<h3 style="text-align: center">
+		<a href="/showItem">商品一覧へ戻る</a>
+		</h3>
 
 	</form>
 

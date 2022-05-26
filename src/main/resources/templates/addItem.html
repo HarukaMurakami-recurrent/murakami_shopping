@@ -9,59 +9,46 @@
 
 	<h1>出品する</h1>
 
-
-		<form action="/addItem" method="post">
-
 		<!-- 新規商品登録情報入力フォーム -->
+	<form action="/addItem" method="post">
+		<!-- 商品の詳細を表示するテーブル -->
 		<table class="itemview-6">
 			<tr>
 				<td>商品名</td>
 				<td><input type="text" name="name"></td>
-
 			</tr>
-
 			<tr>
 				<td>値段</td>
 				<td><input type="text" name="price"></td>
-
 			</tr>
-
 			<tr>
 				<td>写真</td>
 				<td><input type="text" name="picture"></td>
-
 			</tr>
-
 			<tr>
 				<td>在庫数</td>
 				<td><input type="text" name="stock"></td>
-
 			</tr>
-
-			<tr>
-				<td>カテゴリー</td>
-				<td><input type="text" name="category_key"></td>
-
-			</tr>
-			
 			<tr>
 				<td>発送までの日数</td>
 				<td><input type="text" name="delivary_days "></td>
-
 			</tr>
-			
-			
 		</table>
 		
+		<!-- エラーメッセージを表示 -->
 		<span th:text="${message}" style="color: red"></span> 
 		
 		<br>
 		
+		<!--出品するボタン  -->
 		<input type="submit" value="出品する" class="btn5"  style="display:block;margin: auto;">
 		
-		
-
 	</form>
+	
+	<!-- 商品一覧へ戻るリンク -->
+	<h3 style="text-align: center">
+	<a href="/showItem">商品一覧へ戻る</a>
+	</h3>
 
 </body>
 </html>

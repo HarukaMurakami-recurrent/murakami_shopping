@@ -7,33 +7,37 @@
 </head>
 <body>
 	<h1 style="text-align:center">
-	<font face="ＭＳ Ｐ明朝">
-	商品詳細
-	</font>
+	<font face="ＭＳ Ｐ明朝">商品詳細</font>
 	</h1>
 	
+	<!-- カートに追加するフォーム -->
 	<form th:action="|/cart/add/${code}|" method="post">
-	
-	<table class="itemview-3">
-		<tr>
-			<td style="text-align: center;">
-				<img  th:src="|/${item.picture}|">
-			</td>
-			<td style="text-align: left;">
-				<font size="5" face="ＭＳ Ｐ明朝" th:text="${item.name}"> </font>
-			</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td th:text="|値段:${item.price}|"></td>
-		</tr>
-		<tr>
-			<td colspan="2" style="text-align: center;">
-				<input type="submit" value="カートに入れる" class="btn5">
-			</td>
-		</tr>
-	</table>  
+		<!--  指定したコードの商品の詳細をテーブルにして表示-->
+		<table class="itemview-3">
+			<tr>
+				<td style="text-align: center;">
+					<img  th:src="|/${item.picture}|">
+				</td>
+				<td style="text-align: left;">
+					<font size="5" face="ＭＳ Ｐ明朝" th:text="${item.name}"> </font>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td th:text="|値段:${item.price}|"></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align: center;">
+					<input type="submit" value="カートに入れる" class="btn5">
+				</td>
+			</tr>
+		</table>  
 	</form>
+	
+	<!-- 商品一覧へ戻るリンク -->
+	<h3 style="text-align: center">
+	<a href="/showItem">商品一覧へ戻る</a>
+	</h3>
 
 
 </body>

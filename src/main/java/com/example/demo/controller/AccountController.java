@@ -60,6 +60,8 @@ public class AccountController {
 	// ログアウト処理
 	@RequestMapping("/logout")
 	public String logout() {
+		//セッション情報をすべて削除してログアウト
+		session.invalidate();
 		// ログアウト独特の処理もここに記述
 		return "top";
 	}
@@ -101,21 +103,19 @@ public class AccountController {
 
 	// ログインボタンを押したときの処理<form action="login" method="post">
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView login(@RequestParam(name = "name") String name, @RequestParam(name = "pass") String pass,
-
+	public ModelAndView login(
+			@RequestParam(name = "name") String name,
+			@RequestParam(name = "pass") String pass,
 			ModelAndView mv) {
 		// 未入力チェック
 		// ログイン画面に未入力があった場合
 		if (name == null || name.length() == 0 || pass == null || pass.length() == 0) {
-
 			// 新規登録画面に「未入力」の表示
 			mv.addObject("message", "未入力があります");
 			mv.setViewName("login");
 		} else {
 			// すべて入力があった場合
-
 			// DB、Usersからデータを取得
-			// 5/19 List<Users> findByNameAndPass(String name,String pass);
 			List<Users> usersList = usersRepository.findByNameAndPass(name, pass);
 
 			// DB,usersのnameとpasswordと一致していたらshowItemへ遷移
@@ -124,36 +124,32 @@ public class AccountController {
 				// itemList
 				List<Items> itemList = itemsRepository.findAll();
 				mv.addObject("items", itemList);
+				//セッションにログイン情報を登録
 				session.setAttribute("accountInfo", usersList.get(0));
+				//ログイン後、アイテム一覧ページへ遷移する
 				mv.setViewName("showItem");
+				
+			
 			} else {
-
+				//未入力があった場合
 				// nameとpassが不一致の場合、「一致しません」とメッセージを表示
+				mv.addObject("message", "名前とパスワードが一致しません");
 				// ログイン画面へ遷移
-				mv.addObject("message", "名前かパスワードが間違っています");
 				mv.setViewName("login");
-
 			}
-//			mv.addObject("name",name);		
-//			mv.addObject("pass",pass);	
-//			
-
 		}
-
 		return mv;
-
 	}
 
-//	
-//	//ユーザー情報の閲覧
+
+	//ユーザー情報の閲覧
 	@RequestMapping(value = "/accountInfo", method = RequestMethod.GET)
 	public ModelAndView accountInfo(ModelAndView mv) {
-
 		mv.setViewName("accountInfo");
 		return mv;
 	}
 
-	// 確定ボタンを押したときの処理<form action="/update" method="post">
+	// ユーザ情報を変更確定ボタンを押したときの処理<form action="/update" method="post">
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public ModelAndView update(
 			@RequestParam("name") String name, 
@@ -171,23 +167,22 @@ public class AccountController {
 			mv.setViewName("accountInfo");
 		} else {
 			// すべて入力があった場合
-
 			// DB、Usersからデータを取得setAttributeしたaccountInfo
 			Users u = (Users) session.getAttribute("accountInfo");
 			
 			mv.addObject("code",u.getCode());
+			//Usersに変更した情報を登録する
 			Users user= new Users(u.getCode(),name,address,tel,email,pass);
 			usersRepository.saveAndFlush(user);
+			//もう一度ログイン画面を表示
 			mv.setViewName("login");
 		}
 		return mv;
-
 	}
 	
 	// 削除ボタンを押したときの処理<form action="/accountDelete" method="post">
 	@RequestMapping(value = "/accountDelete", method = RequestMethod.POST)
 	public ModelAndView accountDelete(ModelAndView mv) {
-
 		// accountInfoのsession情報をgetAttributeする
 		Users user = (Users) session.getAttribute("accountInfo");
 
@@ -195,10 +190,9 @@ public class AccountController {
 		usersRepository.deleteById(user.getCode());
 		// 削除確定
 		usersRepository.flush();
-
+		//ログイン画面を表示
 		mv.setViewName("login");
 		return mv;
-
 	}
 
 }

@@ -8,30 +8,28 @@
 </head>
 <body>
 
-	<h1 style="text-align:center">
-	商品一覧
-	</h1>
+	<h1 style="text-align:center">商品一覧</h1>
 	
 	<br>
 	
+	<!-- ユーザ情報の閲覧へ遷移するボタン -->
 	<div class='btn4'>
-	<a href="/accountInfo">ユーザー情報を見る</a>
+		<a href="/accountInfo">ユーザー情報を見る</a>
 	</div>
 	
+	<!--出品ページへ遷移するボタン  -->
 	<div class='btn3'>
-	<a href="/addItem">出品する</a>
+		<a href="/addItem">出品する</a>
 	</div>
 	
 	<br>
 	
+	<!-- 商品一覧テーブル -->
 	<table class="itemview-1">
-            <!-- このtrにeach属性をつけてあげてください -->
             <tr th:each="item:${items}">
                 <td>
-                    <!-- 画像 srcは「th:src」でそれぞれのFileに即してあげてください -->
                     <img th:src="|/${item.picture}|" />
                 </td>
-
                 <td>
                     <p>
                         <b th:text="${item.name}"></b>
@@ -39,9 +37,7 @@
                     <p>
                         ￥<span th:text="${item.price}"></span>
                     </p>
-                    <!-- 改行が必要なごとに、pタグでパーテーションを作成してください -->
                     <div class="buttons">
-                        <!-- 必要なボタンをこちらに配置してください -->
                         <a th:href="|/itemDetail/${item.code}|">
                             <button>詳細画面へ</button>
                         </a>
@@ -59,49 +55,11 @@
             </tr>
         </table>
 
-	<!-- <table border="1">
-		<tr>
-			<td>画像</td>
-			<td>名前</td>
-			<td>値段</td>
-			<td>詳細</td>
-			<td>変更</td>
-			<td>削除</td>
-		</tr>
-
-		<tr th:each="item:${items}">
-			<td>
-				<img  th:src="|/${item.picture}|">
-			</td>
-			<td th:text="${item.name}"></td>
-			<td th:text="${item.price}"></td>
-			<td>
-			<a th:href="|/itemDetail/${item.code}|">
-				<button> 詳細</button>
-			</a>
-			</td>
-			<td>
-			<a th:href="|/updateItem/${item.code}|">
-				<button> 変更</button>
-			</a>
-			</td>
-			<td>
-			<a th:href="|/deleteItem/${item.code}|">
-				<button> 削除</button>
-			</a>
-			</td>
-		</tr>
-
-	</table>-->
-
-
-
+	<!-- ログアウト -->
 	<h3 style="text-align: center">
 		 <i class="fas fa-angle-right fa-position-right"></i>
-
 		 <span th:replace="logout"></span>
 	</h3>
-
 
 </body>
 </html>

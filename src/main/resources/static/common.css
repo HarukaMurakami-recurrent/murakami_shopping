@@ -50,6 +50,7 @@ img{
     padding-top: 50px;
 }
 
+/**商品一覧のテーブル */
 .itemview-1{
     border-collapse: collapse;
     border-spacing: 5px;
@@ -58,7 +59,6 @@ img{
 }
 
 .itemview-1 tr{
-    /* 背景色: カラーコードで検索 */
     border: 1px solid #ccc;
 }
 
@@ -94,134 +94,7 @@ img{
     display: inline-block;
 }
 
-.itemview-2{
-    width: 90%;
-    margin: auto;
-}
-
-.itemview-2 > div{
-    width: 30%;
-    float: left;
-    border-radius: 5px;
-    border: 1px solid grey;
-    margin: 5px;
-    padding: 5px;
-}
-
-
-.itemview-2 div p {
-    padding: 0px 10px;
-    white-space: nowrap;
-}
-
-
-.itemview-2 .buttons{
-    text-align: center;
-}
-
-.itemview-3{
-	background-color: #CCFFFF;
-	border-collapse: collapse;
-	width: 90%;
-	
-}
-
-.itemview-3 tr{
-    /* 背景色: カラーコードで検索 */
-    border: 1px solid #ccc;
-}
-
-.itemview-3 td:first-child > img{
-    width: 200px;
-    border: 1px solid #ccc;
-    background-color: #FFFF99;
-}
-
-.itemview-3 td:nth-child(2){
-    text-align: left;
-    vertical-align: center;
-    position: relative;
-}
-
-.itemview-4 {
-	width: 500px;
-	text-align: left;
-	border-collapse: collapse;
-	position: center;
-	background-color: 	#F0F8FF;
-	border-collapse: collapse;
-	width: 90%;
-}
-
-.itemview-4 td {
- padding: 10px;
- border-bottom: solid 1px #748ca5;
-}
-
-.itemview-4 td:nth-child(2) > img{
-    width: 150px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-}
-
-.itemview-5 {
-	width: 500px;
-	text-align: right;
-	border-collapse: collapse;
-	position: center;
-	background-color: 	#CCFFFF;
-	border-collapse: collapse;
-	width: 90%;
-}
-
-.itemview-5 td {
- padding: 10px;
- border-bottom: solid 1px #748ca5;
-}
-
-/**新規登録画面とログイン画面*/
-
-.itemview-6{
-    border-collapse: collapse;
-    border-spacing: 5px;
-    width: 90%;
-    margin: auto;
-}
-
-.itemview-6 td:first-child{
-	text-align: right;
-    width: 150px;
-}
-
-.itemview-6 td:not(:first-child){
-    text-align: left;
-    vertical-align: top;
-    position: relative;
-    width: 150px;
-}
-
-
-
-h1 {
-	text-align: center;
-  position: relative;
-  padding: 0.5em;
-  background: #a6d3c8;
-  color: white;
-  font-family: 'Train One';
-}
-
-
-h1::before {
-  position: absolute;
-  content: '';
-  top: 100%;
-  left: 0;
-  border: none;
-  border-bottom: solid 15px transparent;
-  border-right: solid 20px rgb(149, 158, 155);
-}
-
+/**トップ画面のログイン、新規登録ボタン*/
 .button_line006 a {
     position: relative;
     display: flex;
@@ -260,8 +133,139 @@ h1::before {
   width: 0;
 }
 
+
+
+/**商品詳細のテーブル */
+.itemview-3{
+	background-color: #CCFFFF;
+	border-collapse: collapse;
+	width: 90%;
+	
+}
+
+.itemview-3 tr{
+    border: 1px solid #ccc;
+}
+
+.itemview-3 td:first-child > img{
+    width: 200px;
+    border: 1px solid #ccc;
+    background-color: #FFFF99;
+}
+
+.itemview-3 td:nth-child(2){
+    text-align: left;
+    vertical-align: center;
+    position: relative;
+}
+
+/**カートの中身のテーブル */
+.itemview-4 {
+	width: 500px;
+	text-align: left;
+	border-collapse: collapse;
+	position: center;
+	background-color: 	#F0F8FF;
+	border-collapse: collapse;
+	width: 90%;
+}
+
+.itemview-4 td {
+ padding: 10px;
+ border-bottom: solid 1px #748ca5;
+}
+
+.itemview-4 td:nth-child(2) > img{
+    width: 150px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+/** カート内の総額*/
+.itemview-5 {
+	width: 500px;
+	text-align: right;
+	border-collapse: collapse;
+	position: center;
+	background-color: 	#CCFFFF;
+	border-collapse: collapse;
+	width: 90%;
+}
+
+.itemview-5 td {
+ padding: 10px;
+ border-bottom: solid 1px #748ca5;
+}
+
+
+/**新規登録画面、ログイン画面、商品一覧のテーブル*/
+
+.itemview-6{
+    border-collapse: collapse;
+    border-spacing: 5px;
+    width: 90%;
+    margin: auto;
+}
+
+.itemview-6 td:first-child{
+	text-align: right;
+    width: 150px;
+}
+
+.itemview-6 td:not(:first-child){
+    text-align: left;
+    vertical-align: top;
+    position: relative;
+    width: 150px;
+}
+
+/**出品するボタン、ログイン、新規登録ボタン、アカウント情報更新の確定ボタン、 */
+.btn5 {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 9pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 7px 44px;   /* 余白       */
+  background    : rgba(0, 179, 179, 0.76);     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  opacity       : 1;           /* 透明度     */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 3px 3px 11px #666666;  /* 影の設定 */
+  outline       : none;
+  border        : none;
+}
+.btn5:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  opacity       : 0.8;         /* カーソル時透明度 */
+}
+
+
+h1 {
+	text-align: center;
+  position: relative;
+  padding: 0.5em;
+  background: #a6d3c8;
+  color: white;
+  font-family: 'Train One';
+}
+
+
+h1::before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);
+}
+
+
+
+/** カート内の商品を購入するボタン*/
 .submitButton {
-  
   border-radius : 50%;          /* 角丸       */
   font-size     : 19pt;        /* 文字サイズ */
   text-align    : center;      /* 文字位置   */
@@ -279,7 +283,7 @@ h1::before {
   opacity       : 0.8;         /* カーソル時透明度 */
 }
 
-
+/**出品画面へ遷移するボタン */
 .btn3{
     width:300px;
     height:100px;
@@ -309,6 +313,7 @@ h1::before {
     box-shadow:none;
 }
 
+/**ユーザ情報閲覧へ遷移するボタン*/
 .btn4{
 	margin-left: auto;
     width: 300px;
@@ -339,24 +344,3 @@ h1::before {
     box-shadow:none;
 }
 
-/**出品するボタン、ログイン、新規登録ボタン */
-.btn5 {
-  display       : inline-block;
-  border-radius : 5%;          /* 角丸       */
-  font-size     : 9pt;        /* 文字サイズ */
-  text-align    : center;      /* 文字位置   */
-  cursor        : pointer;     /* カーソル   */
-  padding       : 7px 44px;   /* 余白       */
-  background    : rgba(0, 179, 179, 0.76);     /* 背景色     */
-  color         : #ffffff;     /* 文字色     */
-  line-height   : 1em;         /* 1行の高さ  */
-  opacity       : 1;           /* 透明度     */
-  transition    : .3s;         /* なめらか変化 */
-  box-shadow    : 3px 3px 11px #666666;  /* 影の設定 */
-  outline       : none;
-  border        : none;
-}
-.btn5:hover {
-  box-shadow    : none;        /* カーソル時の影消去 */
-  opacity       : 0.8;         /* カーソル時透明度 */
-}

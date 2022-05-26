@@ -106,6 +106,15 @@ public class Items {
 		this.stock = stock;
 		this.delivaryDays = delivaryDays;
 	}
+	
+	public Items(String name,Integer price,String picture,Integer stock,Integer delivaryDays) {
+		this.name = name;
+		this.price = price;
+		this.picture = picture;
+		this.stock = stock;
+		this.delivaryDays = delivaryDays;
+	}
+	
 
 	//空のコンストラクタ必要
 	public Items() {
